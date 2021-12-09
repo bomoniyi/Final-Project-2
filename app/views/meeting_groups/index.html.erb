@@ -1,0 +1,115 @@
+<div>
+  <div>
+    <h1>
+      List of all meeting groups
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Create a new meeting group
+    </h2>
+
+    <form action="/insert_meeting_group" method="post">
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <div>
+        <label for="meeting_time_box">
+          Meeting time
+        </label>
+
+        <input type="datetime-local" id="meeting_time_box" name="query_meeting_time">
+      </div>
+
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title">
+      </div>
+
+      <div>
+        <label for="location_box">
+          Location
+        </label>
+
+        <input type="text" id="location_box" name="query_location">
+      </div>
+
+      <button>
+        Create meeting group
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+  <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Group ID</th>
+      <th scope="col">Group Name</th>
+      <th scope="col">Leader</th>
+      <th scope="col">Meeting Date/ Time</th>
+      <th scope="col">Meeting Location</th>
+      <th scope="col">Created at</th>
+      <th scope="col">Last Updated at</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+
+      <% @list_of_meeting_groups.each do |a_meeting_group| %>
+      <tr>
+        <td>
+          <%= a_meeting_group.id %>
+        </td>
+
+        <td>
+          <%= a_meeting_group.title %>
+        </td>
+
+        <td>
+          <%= a_meeting_group.user_id.first_name.capitalize + " " + a_bookmark.user.last_name.capitalize %>
+        </td>
+
+        <td>
+          <%= a_meeting_group.meeting_time %>
+        </td>
+
+        <td>
+          <%= a_meeting_group.location %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_meeting_group.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_meeting_group.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/meeting_groups/<%= a_meeting_group.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

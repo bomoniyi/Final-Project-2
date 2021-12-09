@@ -1,0 +1,67 @@
+<div>
+  <div>
+    <h1>
+      List of all joined groups
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+  <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Group ID</th>
+      <th scope="col">Group Name</th>
+      <th scope="col">Leader</th>
+      <th scope="col">Meeting Date/ Time</th>
+      <th scope="col">Meeting Location</th>
+      <th scope="col">Created at</th>
+      <th scope="col">Last Updated at</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+
+      <% @list_of_joined_groups.each do |a_joined_group| %>
+      <tr>
+
+        <td>
+          <%= a_joined_group.user_id.first_name.capitalize + " " + a_bookmark.user.last_name.capitalize %>
+        </td>
+
+        <td>
+          <%= a_joined_group.meeting_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_joined_group.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_joined_group.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/joined_groups/<%= a_joined_group.id %>">
+            Show details
+          </a>
+        </td>
+
+        <td>          
+          <a href="/delete_joined_group/<%= a_bookmark.id %>">
+            Leave Group
+          </a>
+        </td>
+
+      </tr>
+      <% end %>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr>

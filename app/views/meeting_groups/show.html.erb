@@ -1,0 +1,117 @@
+<div>
+  <div>
+    <h1>
+      Meeting group #<%= @the_meeting_group.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/meeting_groups">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_meeting_group/<%= @the_meeting_group.id %>">
+          Delete meeting group
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_meeting_group.user_id %>
+      </dd>
+
+      <dt>
+        Meeting time
+      </dt>
+      <dd>
+        <%= @the_meeting_group.meeting_time %>
+      </dd>
+
+      <dt>
+        Title
+      </dt>
+      <dd>
+        <%= @the_meeting_group.title %>
+      </dd>
+
+      <dt>
+        Location
+      </dt>
+      <dd>
+        <%= @the_meeting_group.location %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_meeting_group.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_meeting_group.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit meeting group
+    </h2>
+
+    <form action="/modify_meeting_group/<%= @the_meeting_group.id %>"  method="post" >
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_meeting_group.user_id %>">
+      </div>
+
+      <div>
+        <label for="meeting_time_box">
+          Meeting time
+        </label>
+
+        <input type="datetime-local" id="meeting_time_box" name="query_meeting_time"
+         value="<%= @the_meeting_group.meeting_time %>">
+      </div>
+
+      <div>
+        <label for="title_box">
+          Title
+        </label>
+
+        <input type="text" id="title_box" name="query_title" value="<%= @the_meeting_group.title %>">
+      </div>
+
+      <div>
+        <label for="location_box">
+          Location
+        </label>
+
+        <input type="text" id="location_box" name="query_location" value="<%= @the_meeting_group.location %>">
+      </div>
+
+      <button>
+        Update meeting group
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

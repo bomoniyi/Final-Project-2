@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Joined group #<%= @the_joined_group.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/joined_groups">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_joined_group/<%= @the_joined_group.id %>">
+          Delete joined group
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        User
+      </dt>
+      <dd>
+        <%= @the_joined_group.user_id %>
+      </dd>
+
+      <dt>
+        Meeting
+      </dt>
+      <dd>
+        <%= @the_joined_group.meeting_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_joined_group.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_joined_group.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit joined group
+    </h2>
+
+    <form action="/modify_joined_group/<%= @the_joined_group.id %>"  method="post" >
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_joined_group.user_id %>">
+      </div>
+
+      <div>
+        <label for="meeting_id_box">
+          Meeting
+        </label>
+
+        <input type="text" id="meeting_id_box" name="query_meeting_id" value="<%= @the_joined_group.meeting_id %>">
+      </div>
+
+      <button>
+        Update joined group
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
