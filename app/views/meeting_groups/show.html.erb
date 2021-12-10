@@ -79,6 +79,9 @@
 
 <hr>
 
+<% if @current_user == nil%>
+
+<%else%>
 
 <% if @current_user.id == @the_meeting_group.user.id %>
 
@@ -134,3 +137,4 @@
 
 <%end%>
 
+<%end%>
