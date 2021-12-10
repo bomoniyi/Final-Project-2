@@ -45,7 +45,6 @@ class MeetingGroupsController < ApplicationController
   def update
     the_id = params.fetch("path_id")
     the_meeting_group = MeetingGroup.where({ :id => the_id }).at(0)
-    the_meeting_group.user_id = params.fetch("query_user_id")
     the_meeting_group.meeting_time = params.fetch("query_meeting_time")
     the_meeting_group.title = params.fetch("query_title")
     the_meeting_group.location = params.fetch("query_location")

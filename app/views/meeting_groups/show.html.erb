@@ -95,22 +95,7 @@
     </h2>
 
     <form action="/modify_meeting_group/<%= @the_meeting_group.id %>"  method="post" >
-      <div>
-        <label for="user_id_box">
-          User
-        </label>
 
-        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_meeting_group.user_id %>">
-      </div>
-
-      <div>
-        <label for="meeting_time_box">
-          Meeting time
-        </label>
-
-        <input type="datetime-local" id="meeting_time_box" name="query_meeting_time"
-         value="<%= @the_meeting_group.meeting_time %>">
-      </div>
 
       <div>
         <label for="title_box">
@@ -126,6 +111,15 @@
         </label>
 
         <input type="text" id="location_box" name="query_location" value="<%= @the_meeting_group.location %>">
+      </div>
+
+      <div>
+        <label for="meeting_time_box">
+          Meeting time
+        </label>
+
+        <input type="datetime-local" id="meeting_time_box" name="query_meeting_time"
+         value="<%= @the_meeting_group.meeting_time %>">
       </div>
 
       <button>

@@ -34,8 +34,9 @@ class JoinedGroupsController < ApplicationController
     the_id = params.fetch("path_id")
     the_joined_group = JoinedGroup.where({ :id => the_id }).at(0)
 
-    the_joined_group.user_id = params.fetch("query_user_id")
-    the_joined_group.meeting_id = params.fetch("query_meeting_id")
+    the_joined_group.meeting.meeting_time = params.fetch("query_meeting_time")
+    the_joined_group.meeting.title = params.fetch("query_title")
+    the_joined_group.meeting.location = params.fetch("query_location")
 
     if the_joined_group.valid?
       the_joined_group.save

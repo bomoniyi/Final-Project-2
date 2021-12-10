@@ -26,8 +26,12 @@
   </thead>
   <tbody>
 
+
+
       <% @list_of_joined_groups.each do |a_joined_group| %>
       <tr>
+
+  <% if @current_user.id == a_joined_group.user.id %>
         <td>
           <%= a_joined_group.id %>
         </td>
@@ -37,7 +41,7 @@
         </th>
 
         <td>
-          <%= a_joined_group.user.first_name.capitalize + " " + a_joined_group.user.last_name.capitalize %>
+          <%= a_joined_group.meeting.user.first_name.capitalize + " " + a_joined_group.meeting.user.last_name.capitalize %>
         </td>
 
         <td>
@@ -66,6 +70,10 @@
             Leave Group
           </a>
         </td>
+
+  <%else%>
+
+  <%end%>
 
       </tr>
       <% end %>

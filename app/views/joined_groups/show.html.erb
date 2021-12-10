@@ -14,18 +14,33 @@
     </div>
 
     <dl>
+
+      <dt>
+        Meeting ID
+      </dt>
+      <dd>
+        <%= @the_joined_group.meeting_id %>
+      </dd>
+
       <dt>
         Group Leader
       </dt>
       <dd>
-        <%= @the_joined_group.user_id %>
+        <%= @the_joined_group.meeting.user.first_name.capitalize + " " + @the_joined_group.meeting.user.last_name.capitalize %>
       </dd>
 
       <dt>
-        Meeting
+        Meeting Time
       </dt>
       <dd>
-        <%= @the_joined_group.meeting_id %>
+          <%= @the_joined_group.meeting.meeting_time %>
+      </dd>
+
+      <dt>
+        Meeting Location
+      </dt>
+      <dd>
+          <%= @the_joined_group.meeting.location %>
       </dd>
 
       <dt>
@@ -47,29 +62,38 @@
 
 <hr>
 
-<% if @current_user.id == @the_joined_group.user.id %>
+<% if @current_user.id == @the_joined_group.meeting.user.id %>
 
 <div>
   <div>
     <h2>
-      Edit joined group
+      Edit Group
     </h2>
 
     <form action="/modify_joined_group/<%= @the_joined_group.id %>"  method="post" >
+
       <div>
-        <label for="user_id_box">
-          User
+        <label for="title_box">
+          Title
         </label>
 
-        <input type="text" id="user_id_box" name="query_user_id" value="<%= @the_joined_group.user_id %>">
+        <input type="text" id="title_box" name="query_title" value="<%= @the_joined_group.meeting.title %>">
       </div>
 
       <div>
-        <label for="meeting_id_box">
-          Meeting
+        <label for="location_box">
+          Location
         </label>
 
-        <input type="text" id="meeting_id_box" name="query_meeting_id" value="<%= @the_joined_group.meeting_id %>">
+        <input type="text" id="location_box" name="query_location" value="<%= @the_joined_group.meeting.location %>">
+      </div>
+
+      <div>
+        <label for="meeting_time_box">
+          Meeting time
+        </label>
+
+        <input type="datetime-local" id="meeting_time_box" name="query_meeting_time" value="<%= @the_joined_group.meeting.meeting_time %>">
       </div>
 
       <button>
