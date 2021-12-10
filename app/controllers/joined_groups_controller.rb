@@ -19,8 +19,8 @@ class JoinedGroupsController < ApplicationController
 
   def create
     the_joined_group = JoinedGroup.new
-    the_joined_group.user_id = params.fetch("query_user_id")
-    the_joined_group.meeting_id = params.fetch("query_meeting_id")
+    the_joined_group.user_id = @current_user.id
+    the_joined_group.meeting_id = params.fetch("query_meeting_group_id")
 
     if the_joined_group.valid?
       the_joined_group.save

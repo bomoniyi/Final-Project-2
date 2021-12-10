@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      Joined group #<%= @the_joined_group.id %> details
+      Welcome to <%= @the_joined_group.meeting.title %>!
     </h1>
 
     <div>
@@ -11,16 +11,11 @@
         </a>
       </div>
 
-      <div>
-        <a href="/delete_joined_group/<%= @the_joined_group.id %>">
-          Delete joined group
-        </a>
-      </div>
     </div>
 
     <dl>
       <dt>
-        User
+        Group Leader
       </dt>
       <dd>
         <%= @the_joined_group.user_id %>
@@ -52,6 +47,7 @@
 
 <hr>
 
+<% if @current_user.id == @the_joined_group.user.id %>
 
 <div>
   <div>
@@ -80,7 +76,18 @@
         Update joined group
       </button>
     </form>
+
+      <div>
+        <a href="/delete_joined_group/<%= @the_joined_group.id %>">
+          Delete joined group
+        </a>
+      </div>
+
   </div>
 </div>
 
 <hr>
+
+<%else%>
+
+<%end%>

@@ -23,6 +23,8 @@ Rails.application.routes.draw do
 
   # Routes for the Joined group resource:
 
+  get("/join_group/:path_id", { :controller => "meeting_groups", :action => "add_user_joinedgroup" })
+
   # CREATE
   post("/insert_joined_group", { :controller => "joined_groups", :action => "create" })
           

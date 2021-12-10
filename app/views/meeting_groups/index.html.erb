@@ -15,21 +15,6 @@
     </h2>
 
     <form action="/insert_meeting_group" method="post">
-      <div>
-        <label for="user_id_box">
-          User
-        </label>
-
-        <input type="text" id="user_id_box" name="query_user_id">
-      </div>
-
-      <div>
-        <label for="meeting_time_box">
-          Meeting time
-        </label>
-
-        <input type="datetime-local" id="meeting_time_box" name="query_meeting_time">
-      </div>
 
       <div>
         <label for="title_box">
@@ -45,6 +30,14 @@
         </label>
 
         <input type="text" id="location_box" name="query_location">
+      </div>
+
+      <div>
+        <label for="meeting_time_box">
+          Meeting time
+        </label>
+
+        <input type="datetime-local" id="meeting_time_box" name="query_meeting_time">
       </div>
 
       <button>
@@ -78,12 +71,12 @@
           <%= a_meeting_group.id %>
         </td>
 
-        <td>
+        <th>
           <%= a_meeting_group.title %>
-        </td>
+        </th>
 
         <td>
-          <%= a_meeting_group.user_id.first_name.capitalize + " " + a_bookmark.user.last_name.capitalize %>
+          <%= a_meeting_group.user.first_name.capitalize + " " + a_meeting_group.user.last_name.capitalize %>
         </td>
 
         <td>
@@ -106,6 +99,7 @@
             Show details
           </a>
         </td>
+
       </tr>
       <% end %>
     </table>

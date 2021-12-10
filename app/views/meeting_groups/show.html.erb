@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      Meeting group #<%= @the_meeting_group.id %> details
+      Welcome to <%= @the_meeting_group.title %>!
     </h1>
 
     <div>
@@ -11,19 +11,32 @@
         </a>
       </div>
 
-      <div>
-        <a href="/delete_meeting_group/<%= @the_meeting_group.id %>">
-          Delete meeting group
-        </a>
-      </div>
     </div>
+
+      <% if @current_user != nil %>
+      <% current_user_joined_group = @current_user.joined_groups.where({ :meeting_id => @the_meeting_group.id }) %>
+
+      <% the_joined_group = current_user_joined_group.at(0) %>
+
+      <% if the_joined_group == nil %>
+        <form action="/insert_joined_group" method="post">      
+          <input type="hidden" name="query_meeting_group_id" value="<%= @the_meeting_group.id %>">
+
+          <button>Join this Group!</button>
+        </form>
+      <% else %>
+        <a href="/delete_joined_group/<%= @the_meeting_group.id %>">
+          Leave Group
+        </a>
+      <% end %>
+    <% end %>
 
     <dl>
       <dt>
-        User
+        Group Leader
       </dt>
       <dd>
-        <%= @the_meeting_group.user_id %>
+        <%= @the_meeting_group.user.first_name.capitalize + " " + @the_meeting_group.user.last_name.capitalize %>
       </dd>
 
       <dt>
@@ -66,6 +79,14 @@
 
 <hr>
 
+
+<% if @current_user.id == @the_meeting_group.user.id %>
+
+<div>
+  <a href="/delete_meeting_group/<%= @the_meeting_group.id %>">
+    Delete meeting group
+  </a>
+</div>
 
 <div>
   <div>
@@ -115,3 +136,7 @@
 </div>
 
 <hr>
+<%else%>
+
+<%end%>
+

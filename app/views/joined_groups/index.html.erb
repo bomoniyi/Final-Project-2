@@ -28,13 +28,24 @@
 
       <% @list_of_joined_groups.each do |a_joined_group| %>
       <tr>
+        <td>
+          <%= a_joined_group.id %>
+        </td>
+
+        <th>
+          <%= a_joined_group.meeting.title %>
+        </th>
 
         <td>
-          <%= a_joined_group.user_id.first_name.capitalize + " " + a_bookmark.user.last_name.capitalize %>
+          <%= a_joined_group.user.first_name.capitalize + " " + a_joined_group.user.last_name.capitalize %>
         </td>
 
         <td>
-          <%= a_joined_group.meeting_id %>
+          <%= a_joined_group.meeting.meeting_time %>
+        </td>
+
+        <td>
+          <%= a_joined_group.meeting.location %>
         </td>
 
         <td>
@@ -51,7 +62,7 @@
         </td>
 
         <td>          
-          <a href="/delete_joined_group/<%= a_bookmark.id %>">
+          <a href="/delete_joined_group/<%= a_joined_group.id %>">
             Leave Group
           </a>
         </td>
